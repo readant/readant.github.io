@@ -1,0 +1,26 @@
+<header class="navbar">
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="<%= theme.logo.url %>" alt="<%= theme.site.title %> Logo">
+      <span class="logo-text"><%= theme.site.title %></span>
+    </a>
+    <nav class="nav-menu">
+      <% theme.nav.forEach(item => { %>
+        <a href="<%= item.url %>" class="nav-link<% if (page.path === item.url || (item.url !== '/' && page.path.startsWith(item.url))) { %> active<% } %>">
+          <span class="icon"><%= item.icon === 'home' ? '🏠' : item.icon === 'archive' ? '📚' : item.icon === 'category' ? '📁' : item.icon === 'tags' ? '🏷️' : item.icon === 'user' ? '👤' : '📄' %></span>
+          <span><%= item.name %></span>
+        </a>
+      <% }) %>
+    </nav>
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <% theme.nav.forEach(item => { %>
+      <a href="<%= item.url %>" class="mobile-nav-link"><%= item.name %></a>
+    <% }) %>
+  </div>
+</header>

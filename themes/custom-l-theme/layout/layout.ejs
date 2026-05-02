@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'zh-CN' %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="<%= page.description || theme.site.description %>">
+  <meta name="keywords" content="<%= theme.site.keywords %>">
+  <meta name="author" content="<%= theme.site.author %>">
+  <title><%= page.title ? page.title + ' - ' + theme.site.title : theme.site.title %></title>
+  <link rel="icon" href="<%= theme.logo.favicon %>" type="image/png">
+  <link rel="stylesheet" href="<%= config.root %>css/l-theme.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/dracula.min.css">
+</head>
+<body>
+  <%- partial('_partials/header') %>
+  <main class="main-content">
+    <%- body %>
+  </main>
+  <%- partial('_partials/footer') %>
+  <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+</body>
+</html>

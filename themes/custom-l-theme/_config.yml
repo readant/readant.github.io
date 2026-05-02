@@ -1,0 +1,75 @@
+# L Blog Custom Theme Configuration
+# Author: L
+# Version: 1.0.0
+
+# Site Settings
+site:
+  title: L Blog
+  subtitle: '探索技术边界，创造无限可能'
+  description: 'L的个人技术博客，分享物联网、编程开发、技术探索等内容'
+  keywords: '物联网, 技术博客, 编程, 开发'
+  author: L
+  language: zh-CN
+  timezone: Asia/Shanghai
+
+# Logo Settings
+logo:
+  url: /img/logo.png
+  favicon: /img/logo.png
+
+# Navigation Menu
+nav:
+  - name: 首页
+    url: /
+    icon: home
+  - name: 归档
+    url: /archives/
+    icon: archive
+  - name: 分类
+    url: /categories/
+    icon: category
+  - name: 标签
+    url: /tags/
+    icon: tags
+  - name: 关于
+    url: /about/
+    icon: user
+
+# Color Scheme
+color:
+  primary: '#a0a0ff'
+  secondary: '#6c757d'
+  background: '#0a0a0f'
+  card: '#15151f'
+  text: '#e0e0e0'
+  text_secondary: '#a0a0a0'
+  link: '#a0a0ff'
+  border: '#303040'
+  hover: '#c0c0ff'
+
+# Typography
+font:
+  family: 'PingFang SC, Microsoft YaHei, sans-serif'
+  size: 16px
+  heading_size: 1.5rem
+  code_size: 0.9rem
+
+# Features
+features:
+  highlight:
+    enable: true
+    theme: 'dracula'
+  search:
+    enable: true
+  comment:
+    enable: true
+    type: 'valine'
+  lazyload:
+    enable: true
+  toc:
+    enable: true
+
+# Footer
+footer:
+  copyright: '© 2024 L Blog. All rights reserved.'
+  powered_by: true

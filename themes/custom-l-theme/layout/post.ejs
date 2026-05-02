@@ -1,0 +1,60 @@
+<article class="post-detail">
+  <div class="container">
+    <header class="post-header">
+      <% if (page.categories && page.categories.length > 0) { %>
+        <span class="post-category"><%= page.categories[0].name %></span>
+      <% } else { %>
+        <span class="post-category">未分类</span>
+      <% } %>
+      <h1 class="post-title"><%= page.title %></h1>
+      <div class="post-meta">
+        <span class="post-meta-item">
+          <span>👤</span>
+          <span><%= page.author || theme.site.author %></span>
+        </span>
+        <span class="post-meta-item">
+          <span>📅</span>
+          <span><%= page.date.format('YYYY-MM-DD') %></span>
+        </span>
+        <span class="post-meta-item">
+          <span>⏱️</span>
+          <span><%= Math.ceil(page.content.length / 500) %> 分钟</span>
+        </span>
+      </div>
+    </header>
+
+    <div class="post-content">
+      <%- page.content %>
+    </div>
+
+    <footer class="post-footer">
+      <% if (page.tags && page.tags.length > 0) { %>
+        <div class="post-tags-list">
+          <span class="post-tags-label">标签：</span>
+          <% page.tags.forEach(tag => { %>
+            <a href="<%= url_for('/tags/' + tag.name) %>" class="post-tag-link"><%= tag.name %></a>
+          <% }) %>
+        </div>
+      <% } %>
+    </footer>
+
+    <% if (page.prev || page.next) { %>
+      <nav class="post-nav">
+        <% if (page.prev) { %>
+          <a href="<%= url_for(page.prev.path) %>" class="post-nav-item prev">
+            <span class="post-nav-label">← 上一篇</span>
+            <span class="post-nav-title"><%= page.prev.title %></span>
+          </a>
+        <% } else { %>
+          <div></div>
+        <% } %>
+        <% if (page.next) { %>
+          <a href="<%= url_for(page.next.path) %>" class="post-nav-item next">
+            <span class="post-nav-label">下一篇 →</span>
+            <span class="post-nav-title"><%= page.next.title %></span>
+          </a>
+        <% } %>
+      </nav>
+    <% } %>
+  </div>
+</article>

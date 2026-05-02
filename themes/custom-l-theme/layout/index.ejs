@@ -1,0 +1,66 @@
+<!-- Hero Section -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-logo">
+        <img src="<%= theme.logo.url %>" alt="<%= theme.site.title %>">
+      </div>
+      <h1 class="hero-title"><%= theme.site.title %></h1>
+      <p class="hero-subtitle"><%= theme.site.subtitle %></p>
+      <div class="hero-buttons">
+        <a href="/archives/" class="btn btn-primary">浏览文章</a>
+        <a href="/about/" class="btn btn-secondary">了解更多</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Posts Section -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">最新文章</h2>
+    </div>
+    <div class="posts-grid">
+      <% page.posts.forEach(post => { %>
+        <article class="post-card">
+          <div class="post-card-header">
+            <% if (post.categories && post.categories.length > 0) { %>
+              <span class="post-category"><%= post.categories[0].name %></span>
+            <% } else { %>
+              <span class="post-category">未分类</span>
+            <% } %>
+            <span class="post-date"><%= post.date.format('YYYY-MM-DD') %></span>
+          </div>
+          <h3 class="post-title">
+            <a href="<%= url_for(post.path) %>"><%= post.title %></a>
+          </h3>
+          <p class="post-excerpt"><%= post.excerpt || post.content.replace(/<[^>]*>/g, '').substring(0, 150) %>...</p>
+          <% if (post.tags && post.tags.length > 0) { %>
+            <div class="post-tags">
+              <% post.tags.forEach(tag => { %>
+                <span class="post-tag"><%= tag.name %></span>
+              <% }) %>
+            </div>
+          <% } %>
+          <a href="<%= url_for(post.path) %>" class="read-more">阅读全文 →</a>
+        </article>
+      <% }) %>
+    </div>
+    <% if (page.total > 1) { %>
+      <div class="pagination">
+        <% if (page.prev) { %>
+          <a href="<%= url_for(page.prev_link) %>" class="page-btn">← 上一页</a>
+        <% } else { %>
+          <span class="page-btn disabled">← 上一页</span>
+        <% } %>
+        <span class="page-info"><%= page.current %> / <%= page.total %></span>
+        <% if (page.next) { %>
+          <a href="<%= url_for(page.next_link) %>" class="page-btn">下一页 →</a>
+        <% } else { %>
+          <span class="page-btn disabled">下一页 →</span>
+        <% } %>
+      </div>
+    <% } %>
+  </div>
+</section>

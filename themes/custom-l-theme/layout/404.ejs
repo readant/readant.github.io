@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'zh-CN' %>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - 页面未找到 | <%= theme.site.title %></title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <div class="error-page">
+    <div class="error-content">
+      <div class="error-logo">
+        <img src="<%= theme.logo.url %>" alt="Logo">
+      </div>
+      <h1 class="error-code">404</h1>
+      <p class="error-message">页面未找到</p>
+      <p class="error-hint">您访问的页面不存在或已被移动</p>
+      <a href="/" class="btn btn-primary">返回首页</a>
+    </div>
+  </div>
+</body>
+</html>

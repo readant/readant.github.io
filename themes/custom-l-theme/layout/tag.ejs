@@ -1,0 +1,23 @@
+<section class="tag-page">
+  <div class="container">
+    <header class="tag-header">
+      <h1>标签云</h1>
+      <p>共 <%= site.tags.length %> 个标签</p>
+    </header>
+
+    <div class="tag-cloud">
+      <% if (site.tags.length > 0) { %>
+        <% site.tags.forEach(tag => { %>
+          <a href="<%= url_for(tag.path) %>" class="tag-item">
+            <%= tag.name %>
+            <span class="tag-count"><%= tag.posts.length %></span>
+          </a>
+        <% }) %>
+      <% } else { %>
+        <div class="empty-state">
+          <p>暂无标签</p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</section>

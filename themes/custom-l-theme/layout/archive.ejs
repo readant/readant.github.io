@@ -1,0 +1,30 @@
+<section class="archive-page">
+  <div class="container">
+    <header class="page-header">
+      <h1>文章归档</h1>
+      <p>共 <%= site.posts.length %> 篇文章</p>
+    </header>
+
+    <div class="archive-content">
+      <% if (page.archives) { %>
+        <% page.archives.forEach(year => { %>
+          <div class="year-group">
+            <h2 class="year-title"><%= year.year %></h2>
+            <ul class="post-list">
+              <% year.posts.forEach(post => { %>
+                <li class="post-item">
+                  <span class="post-date"><%= post.date.format('MM-DD') %></span>
+                  <a href="<%= url_for(post.path) %>" class="post-link"><%= post.title %></a>
+                </li>
+              <% }) %>
+            </ul>
+          </div>
+        <% }) %>
+      <% } else { %>
+        <div class="empty-state">
+          <p>暂无文章</p>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,28 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="footer-logo">
+          <img src="<%= theme.logo.url %>" alt="Logo">
+          <span><%= theme.site.title %></span>
+        </div>
+        <p><%= theme.site.description %></p>
+      </div>
+      <div class="footer-section">
+        <h4>快速链接</h4>
+        <ul>
+          <% theme.nav.forEach(item => { %>
+            <li><a href="<%= item.url %>"><%= item.name %></a></li>
+          <% }) %>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>关于</h4>
+        <p>由 <a href="https://hexo.io" target="_blank">Hexo</a> 驱动</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p><%= theme.footer.copyright %></p>
+    </div>
+  </div>
+</footer>
