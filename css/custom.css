@@ -1,0 +1,66 @@
+/* 自定义CSS - L Blog */
+
+/* 导航栏Logo样式 */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-brand img {
+  height: 36px;
+  width: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(160, 160, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.navbar-brand img:hover {
+  box-shadow: 0 0 25px rgba(160, 160, 255, 0.8);
+  transform: scale(1.1);
+}
+
+/* 首页Banner Logo效果 */
+.banner {
+  background-size: contain !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* 关于页头像发光效果 */
+.about-avatar {
+  box-shadow: 0 0 30px rgba(160, 160, 255, 0.6);
+  border: 2px solid rgba(160, 160, 255, 0.3);
+  transition: all 0.4s ease;
+}
+
+.about-avatar:hover {
+  box-shadow: 0 0 50px rgba(160, 160, 255, 0.9);
+  transform: scale(1.05);
+}
+
+/* 链接发光效果 */
+a {
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  text-shadow: 0 0 10px rgba(160, 160, 255, 0.5);
+}
+
+/* 卡片悬浮效果 */
+.board {
+  transition: all 0.3s ease;
+  border: 1px solid rgba(160, 160, 255, 0.1);
+}
+
+.board:hover {
+  border-color: rgba(160, 160, 255, 0.3);
+  box-shadow: 0 0 20px rgba(160, 160, 255, 0.15);
+}
+
+/* 代码块发光效果 */
+pre {
+  border: 1px solid rgba(160, 160, 255, 0.2);
+  box-shadow: 0 0 10px rgba(160, 160, 255, 0.1);
+}
