@@ -7,7 +7,7 @@
     <nav class="nav-menu">
       <% theme.nav.forEach(item => { %>
         <a href="<%= item.url %>" class="nav-link<% if (page.path === item.url || (item.url !== '/' && page.path.startsWith(item.url))) { %> active<% } %>">
-          <span class="icon"><%= item.icon === 'home' ? '🏠' : item.icon === 'archive' ? '📚' : item.icon === 'category' ? '📁' : item.icon === 'tags' ? '🏷️' : item.icon === 'user' ? '👤' : '📄' %></span>
+          <span class="icon"><%= item.icon === 'home' ? '🏠' : item.icon === 'archive' ? '📚' : item.icon === 'category' ? '📁' : item.icon === 'tags' ? '🏷️' : item.icon === 'projects' ? '🚀' : item.icon === 'user' ? '👤' : '📄' %></span>
           <span><%= item.name %></span>
         </a>
       <% }) %>

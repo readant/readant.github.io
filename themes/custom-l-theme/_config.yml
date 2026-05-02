@@ -31,6 +31,9 @@ nav:
   - name: 标签
     url: /tags/
     icon: tags
+  - name: 作品
+    url: /projects/
+    icon: projects
   - name: 关于
     url: /about/
     icon: user
