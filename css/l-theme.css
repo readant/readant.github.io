@@ -1225,6 +1225,87 @@ ul, ol {
   }
 }
 
+/* Page Content */
+.page-content {
+  padding: 3rem 0 5rem;
+}
+
+.page-article {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.page-body {
+  padding: 3rem;
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.page-body h1,
+.page-body h2,
+.page-body h3 {
+  margin: 1.5rem 0 1rem;
+  color: var(--text);
+}
+
+.page-body h2 {
+  font-size: 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.page-body p {
+  margin-bottom: 1rem;
+}
+
+.page-body ul,
+.page-body ol {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.page-body li {
+  margin-bottom: 0.5rem;
+}
+
+.page-body strong {
+  color: var(--primary-light);
+}
+
+.page-body a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.page-body a:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+.page-body code {
+  padding: 0.2rem 0.4rem;
+  background: var(--background);
+  border-radius: var(--radius-sm);
+  font-family: 'Fira Code', monospace;
+  font-size: 0.9em;
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: 2rem 0 3rem;
+  }
+
+  .page-body {
+    padding: 2rem 1.5rem;
+  }
+}
+
 @media (max-width: 480px) {
   .container {
     padding: 0 1rem;
