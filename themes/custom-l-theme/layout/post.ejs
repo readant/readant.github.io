@@ -2,7 +2,7 @@
   <div class="container">
     <header class="post-header">
       <% if (page.categories && page.categories.length > 0) { %>
-        <span class="post-category"><%= page.categories[0].name %></span>
+        <span class="post-category"><%= page.categories.first().name %></span>
       <% } else { %>
         <span class="post-category">未分类</span>
       <% } %>
@@ -32,7 +32,7 @@
         <div class="post-tags-list">
           <span class="post-tags-label">标签：</span>
           <% page.tags.forEach(tag => { %>
-            <a href="<%= url_for('/tags/' + tag.name) %>" class="post-tag-link"><%= tag.name %></a>
+            <a href="<%= url_for(tag.path) %>" class="post-tag-link"><%= tag.name %></a>
           <% }) %>
         </div>
       <% } %>

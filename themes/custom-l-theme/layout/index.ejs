@@ -26,7 +26,7 @@
         <article class="post-card">
           <div class="post-card-header">
             <% if (post.categories && post.categories.length > 0) { %>
-              <span class="post-category"><%= post.categories[0].name %></span>
+              <span class="post-category"><%= post.categories.first().name %></span>
             <% } else { %>
               <span class="post-category">未分类</span>
             <% } %>
@@ -39,7 +39,7 @@
           <% if (post.tags && post.tags.length > 0) { %>
             <div class="post-tags">
               <% post.tags.forEach(tag => { %>
-                <span class="post-tag"><%= tag.name %></span>
+                <a href="<%= url_for(tag.path) %>" class="post-tag"><%= tag.name %></a>
               <% }) %>
             </div>
           <% } %>

@@ -1,32 +1,33 @@
-<section class="category-page">
+<section class="category-detail-page">
   <div class="container">
     <header class="page-header">
-      <h1>文章分类</h1>
+      <h1>分类：<%= page.category %></h1>
+      <p>共 <%= page.posts.length %> 篇文章</p>
     </header>
 
-    <div class="category-content">
-      <% if (site.categories.length > 0) { %>
-        <div class="category-grid">
-          <% site.categories.forEach(cat => { %>
-            <div class="category-card">
-              <h3 class="category-name">
-                <a href="<%= url_for(cat.path) %>"><%= cat.name %></a>
-              </h3>
-              <span class="category-count"><%= cat.posts.length %> 篇文章</span>
-              <ul class="category-posts">
-                <% cat.posts.slice(0, 5).forEach(post => { %>
-                  <li><a href="<%= url_for(post.path) %>"><%= post.title %></a></li>
+    <div class="category-posts">
+      <% if (page.posts.length > 0) { %>
+        <div class="posts-list">
+          <% page.posts.forEach(post => { %>
+            <article class="post-card">
+              <div class="post-card-header">
+                <span class="post-category"><%= post.categories && post.categories.length > 0 ? post.categories.first().name : '未分类' %></span>
+                <span class="post-date"><%= post.date.format('YYYY-MM-DD') %></span>
+              </div>
+              <h2 class="post-title"><a href="<%= url_for(post.path) %>"><%= post.title %></a></h2>
+              <p class="post-excerpt"><%= post.excerpt || post.content.substring(0, 150) + '...' %></p>
+              <div class="post-tags">
+                <% post.tags.forEach(tag => { %>
+                  <a href="<%= url_for(tag.path) %>" class="post-tag"><%= tag.name %></a>
                 <% }) %>
-                <% if (cat.posts.length > 5) { %>
-                  <li><a href="<%= url_for(cat.path) %>" class="view-all">查看全部 →</a></li>
-                <% } %>
-              </ul>
-            </div>
+              </div>
+              <a href="<%= url_for(post.path) %>" class="read-more">阅读更多 →</a>
+            </article>
           <% }) %>
         </div>
       <% } else { %>
         <div class="empty-state">
-          <p>暂无分类</p>
+          <p>该分类下暂无文章</p>
         </div>
       <% } %>
     </div>

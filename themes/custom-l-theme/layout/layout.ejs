@@ -9,7 +9,6 @@
   <title><%= page.title ? page.title + ' - ' + theme.site.title : theme.site.title %></title>
   <link rel="icon" href="<%= theme.logo.favicon %>" type="image/png">
   <link rel="stylesheet" href="<%= config.root %>css/l-theme.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/styles/dracula.min.css">
 </head>
 <body>
   <%- partial('_partials/header') %>
@@ -18,6 +17,12 @@
   </main>
   <%- partial('_partials/footer') %>
   <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.8.0/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (typeof hljs !== 'undefined') {
+        hljs.initHighlightingOnLoad();
+      }
+    });
+  </script>
 </body>
 </html>
