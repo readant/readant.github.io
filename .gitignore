@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Hexo generated files
+public/
+
+# Deploy directory
+.deploy_git/
+
+# Database
+db.json
+
+# Logs
+*.log
+npm-debug.log*
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+tmp/

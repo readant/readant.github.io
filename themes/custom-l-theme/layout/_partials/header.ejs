@@ -1,0 +1,28 @@
+<header class="header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      <img src="/img/avatar.png" alt="Logo">
+      <span><%= config.author.name %></span>
+    </a>
+    <nav class="nav">
+      <% (theme.nav || []).forEach(function(item) { %>
+        <a href="<%= item.url %>" class="nav-item <%= page.path === item.url || (item.url !== '/' && page.path.startsWith(item.url)) ? 'active' : '' %>">
+          <%= item.name %>
+        </a>
+      <% }); %>
+    </nav>
+    <div class="header-actions">
+      <button class="search-button" id="searchTrigger" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>

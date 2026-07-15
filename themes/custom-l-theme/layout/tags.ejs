@@ -1,0 +1,13 @@
+<div class="page-container">
+  <article class="page-article">
+    <h1 class="page-title">标签</h1>
+    <div class="tag-list">
+      <% site.tags.each(function(tag) { %>
+        <a href="<%= url_for(tag.path) %>" class="tag" style="font-size: <%= Math.min(1 + tag.posts.length * 0.1, 1.5) %>rem;">
+          #<%= tag.name %>
+          <span>(<%= tag.posts.length %>)</span>
+        </a>
+      <% }); %>
+    </div>
+  </article>
+</div>

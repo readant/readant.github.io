@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <%# SEO Meta Tags %>
+  <title><%= page.title ? page.title + ' - ' : '' %><%= config.title %></title>
+  <meta name="description" content="<%= page.description || config.description %>">
+  <meta name="author" content="<%= config.author %>">
+  <meta name="keywords" content="<%= page.tags ? page.tags.map(t => t.name).join(', ') : '' %>">
+
+  <%# Open Graph / Social %>
+  <meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>">
+  <meta property="og:title" content="<%= page.title ? page.title + ' - ' : '' %><%= config.title %>">
+  <meta property="og:description" content="<%= page.description || config.description %>">
+  <meta property="og:url" content="<%= url_for(page.path) %>">
+  <meta property="og:site_name" content="<%= config.title %>">
+  <% if (page.featured || page.thumbnail) { %>
+  <meta property="og:image" content="<%= page.featured || page.thumbnail %>">
+  <% } %>
+
+  <%# Twitter Card %>
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="<%= page.title ? page.title + ' - ' : '' %><%= config.title %>">
+  <meta name="twitter:description" content="<%= page.description || config.description %>">
+
+  <%# Favicon %>
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+
+  <%# Canonical URL %>
+  <link rel="canonical" href="<%= url_for(page.path) %>">
+
+  <%# Fonts - 使用国内 CDN %>
+  <link rel="preconnect" href="https://fonts.loli.net">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.loli.net/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <%# Styles %>
+  <link rel="stylesheet" href="/css/l-theme.css">
+</head>
+<body>
+  <%- partial('_partials/header') %>
+  <main class="main">
+    <div class="container">
+      <%- body %>
+    </div>
+  </main>
+  <%- partial('_partials/footer') %>
+
+  <%# Search Overlay %>
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="搜索文章...">
+        <span class="search-shortcut">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults">
+        <div class="search-empty">输入关键词开始搜索</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/particles.js"></script>
+  <script src="/js/cursor-effects.js"></script>
+  <script src="/js/3d-effects.js"></script>
+</body>
+</html>

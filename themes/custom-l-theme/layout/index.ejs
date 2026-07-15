@@ -1,0 +1,159 @@
+<div class="hero-section">
+  <div class="taiji-container">
+    <div class="taiji-wrapper">
+      <div class="taiji-circle">
+        <div class="skill-ring">
+          <% const skills = theme.skills || []; %>
+          <% skills.forEach(function(skill, index) { %>
+            <% const angle = (index / skills.length) * 360; %>
+            <div class="skill-item" style="--angle: <%= angle %>deg;">
+              <span class="skill-name"><%= skill.name %></span>
+            </div>
+          <% }); %>
+        </div>
+        <div class="center-element">
+          <div class="avatar-display">
+            <img src="<%= theme.author.avatar %>" alt="<%= theme.author.name %>" class="avatar-img">
+          </div>
+          <div class="yinyang-display">
+            <div class="yinyang-symbol"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-text">
+      <h1 class="hero-title"><%= theme.author.name %></h1>
+      <p class="hero-bio"><%= theme.author.bio %></p>
+    </div>
+    <div class="scroll-hint">
+      <span>向下滚动</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </div>
+</div>
+
+<section class="about-section">
+  <div class="container">
+    <div class="about-content">
+      <div class="about-header">
+        <h2 class="section-title">关于我</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="about-intro">
+        <p><%= theme.author.intro %></p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <div class="about-icon"></div>
+          <h3 class="about-card-title">个人目标</h3>
+          <p><%= theme.author.objective %></p>
+        </div>
+        
+        <div class="about-card">
+          <div class="about-icon"></div>
+          <h3 class="about-card-title">技术理念</h3>
+          <p><%= theme.author.philosophy %></p>
+        </div>
+        
+        <div class="about-card">
+          <div class="about-icon"></div>
+          <h3 class="about-card-title">学习方向</h3>
+          <p><%= theme.author.learning %></p>
+        </div>
+        
+        <div class="about-card">
+          <div class="about-icon"></div>
+          <h3 class="about-card-title">兴趣爱好</h3>
+          <p><%= theme.author.hobbies %></p>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-value"><%= theme.author.stats.projects %></span>
+          <span class="stat-label">项目经验</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value"><%= theme.author.stats.years %></span>
+          <span class="stat-label">开发年限</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value"><%= theme.author.stats.blogs %></span>
+          <span class="stat-label">博客文章</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value"><%= theme.author.stats.commits %></span>
+          <span class="stat-label">代码提交</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<% if (page.posts && page.posts.length) { %>
+  <section class="post-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">最新文章</h2>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="post-grid">
+        <% page.posts.each(function(post, index) { %>
+          <article class="post-card <%= index === 0 ? 'featured' : '' %>">
+            <header class="post-header">
+              <h2 class="post-title">
+                <a href="<%= url_for(post.path) %>"><%= post.title %></a>
+              </h2>
+              <div class="post-meta">
+                <span class="post-date"><%= post.date.format('YYYY-MM-DD') %></span>
+                <% if (post.categories && post.categories.length) { %>
+                  <span class="post-category">
+                    <%= post.categories.first().name %>
+                  </span>
+                <% } %>
+              </div>
+            </header>
+            <% if (post.excerpt) { %>
+              <div class="post-excerpt">
+                <%- post.excerpt %>
+              </div>
+            <% } %>
+            <footer class="post-footer">
+              <% if (post.tags && post.tags.length) { %>
+                <div class="post-tags">
+                  <% post.tags.each(function(tag) { %>
+                    <a href="<%= url_for('/tags/' + tag.name + '/') %>" class="tag"><%= tag.name %></a>
+                  <% }); %>
+                </div>
+              <% } %>
+              <a href="<%= url_for(post.path) %>" class="read-more">阅读更多</a>
+            </footer>
+          </article>
+        <% }); %>
+      </div>
+
+      <% if (page.total > 1) { %>
+        <nav class="pagination">
+          <% if (page.prev) { %>
+            <a href="<%= page.prev_link %>" class="prev">上一页</a>
+          <% } %>
+          <% if (page.next) { %>
+            <a href="<%= page.next_link %>" class="next">下一页</a>
+          <% } %>
+        </nav>
+      <% } %>
+    </div>
+  </section>
+<% } else { %>
+  <section class="post-section">
+    <div class="container">
+      <div class="empty-state">
+        <p>暂无文章</p>
+        <a href="/" class="btn btn-primary">返回首页</a>
+      </div>
+    </div>
+  </section>
+<% } %>

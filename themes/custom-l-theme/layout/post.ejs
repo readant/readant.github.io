@@ -1,0 +1,58 @@
+<% function generateTOC(content) {
+  const headings = [];
+  const regex = /<h([1-6])[^>]*id="([^"]*)"[^>]*>(.*?)<\/h\1>/gi;
+  let match;
+  while ((match = regex.exec(content)) !== null) {
+    headings.push({
+      level: parseInt(match[1]),
+      id: match[2],
+      text: match[3].replace(/<[^>]+>/g, '')
+    });
+  }
+  return headings;
+} %>
+
+<% const toc = generateTOC(page.content); %>
+
+<div class="post-layout <%= toc.length === 0 ? 'single-post' : '' %>">
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title"><%= page.title %></h1>
+      <div class="post-meta">
+        <span class="post-date"><%= page.date.format('YYYY-MM-DD') %></span>
+        <% if (page.categories && page.categories.length) { %>
+          <span class="post-category">
+            <%= page.categories.first().name %>
+          </span>
+        <% } %>
+      </div>
+    </header>
+    <div class="post-content">
+      <%- page.content %>
+    </div>
+    <% if (page.tags && page.tags.length) { %>
+      <footer class="post-footer">
+        <div class="post-tags">
+          <% page.tags.each(function(tag) { %>
+            <a href="<%= url_for('/tags/' + tag.name + '/') %>" class="tag"><%= tag.name %></a>
+          <% }); %>
+        </div>
+      </footer>
+    <% } %>
+  </article>
+
+  <% if (toc.length > 0) { %>
+    <aside class="toc-sidebar">
+      <nav class="toc">
+        <div class="toc-title">目录</div>
+        <ul class="toc-list">
+          <% toc.forEach(function(item) { %>
+            <li class="toc-item level-<%= item.level %>">
+              <a href="#<%= item.id %>" class="toc-link"><%= item.text %></a>
+            </li>
+          <% }); %>
+        </ul>
+      </nav>
+    </aside>
+  <% } %>
+</div>

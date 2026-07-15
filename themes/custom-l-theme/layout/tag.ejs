@@ -1,0 +1,17 @@
+<div class="page-container">
+  <article class="page-article">
+    <h1 class="page-title">
+      标签：#<%= page.tag %>
+    </h1>
+    <div class="tag-posts">
+      <% page.posts.each(function(post) { %>
+        <div class="tag-post">
+          <span class="tag-post-date"><%= post.date.format('YYYY-MM-DD') %></span>
+          <span class="tag-post-title">
+            <a href="<%= url_for(post.path) %>"><%= post.title %></a>
+          </span>
+        </div>
+      <% }); %>
+    </div>
+  </article>
+</div>

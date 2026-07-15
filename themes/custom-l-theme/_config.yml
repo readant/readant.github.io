@@ -1,0 +1,56 @@
+# Site
+title: L Blog
+nav:
+  - name: 首页
+    url: /
+    icon: home
+  - name: 归档
+    url: /archives/
+    icon: archive
+  - name: 分类
+    url: /categories/
+    icon: category
+  - name: 标签
+    url: /tags/
+    icon: tags
+  - name: 作品
+    url: /projects/
+    icon: projects
+  - name: 关于
+    url: /about/
+    icon: user
+
+# Author
+author:
+  name: readant
+  bio: 物联网工程专业学生 / 技术爱好者
+  avatar: /img/avatar.png
+  intro: 我是一名物联网工程专业的学生，对技术充满热情。热爱编程、开源和探索新技术，致力于成为一名全栈开发者。在学习过程中，我不断积累项目经验，从前端到后端，从硬件到软件，都有浓厚的兴趣和实践经历。
+  objective: 成为一名优秀的全栈工程师，能够独立完成从需求分析到产品上线的完整流程，创造有价值的产品。
+  philosophy: 代码是最好的文档，简洁胜于复杂，优雅胜于晦涩。注重代码质量和用户体验，追求技术与艺术的完美结合。
+  learning: 目前正在深入学习人工智能、云计算和边缘计算相关技术，探索物联网与AI的融合应用。
+  hobbies: 除了编程，我还喜欢摄影、阅读和旅行，这些爱好让我保持对生活的热情和创造力。
+  stats:
+    projects: 15+
+    years: 3
+    blogs: 50+
+    commits: 500+
+
+# Skills - 八卦阵环绕的技术栈
+skills:
+  - name: HTML5
+    category: frontend
+  - name: CSS3
+    category: frontend
+  - name: JavaScript
+    category: frontend
+  - name: React
+    category: frontend
+  - name: Vue
+    category: frontend
+  - name: Node.js
+    category: backend
+  - name: Python
+    category: backend
+  - name: Express
+    category: backend

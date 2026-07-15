@@ -1,0 +1,32 @@
+<div class="page-container">
+  <article class="page-article">
+    <h1 class="page-title">归档</h1>
+    <div class="archive-list">
+      <% var posts = site.posts.sort('date', -1); %>
+      <% var years = {}; %>
+      <% posts.each(function(post) { %>
+        <% var year = post.date.year(); %>
+        <% if (!years[year]) { %>
+          <% years[year] = []; %>
+        <% } %>
+        <% years[year].push(post); %>
+      <% }); %>
+
+      <% Object.keys(years).sort().reverse().forEach(function(year) { %>
+        <div class="archive-item">
+          <h2><%= year %>年</h2>
+          <div class="archive-posts">
+            <% years[year].forEach(function(post) { %>
+              <div class="archive-post">
+                <span class="archive-post-date"><%= post.date.format('MM-DD') %></span>
+                <span class="archive-post-title">
+                  <a href="<%= url_for(post.path) %>"><%= post.title %></a>
+                </span>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </article>
+</div>

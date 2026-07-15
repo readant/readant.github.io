@@ -1,0 +1,25 @@
+<div class="page-container">
+  <article class="page-article">
+    <h1 class="page-title">分类</h1>
+    <div class="category-list">
+      <% site.categories.each(function(category) { %>
+        <div class="category-item">
+          <h2>
+            <a href="<%= url_for(category.path) %>"><%= category.name %></a>
+            <span>(<%= category.posts.length %>)</span>
+          </h2>
+          <div class="category-posts">
+            <% category.posts.each(function(post) { %>
+              <div class="category-post">
+                <span class="category-post-date"><%= post.date.format('YYYY-MM-DD') %></span>
+                <span class="category-post-title">
+                  <a href="<%= url_for(post.path) %>"><%= post.title %></a>
+                </span>
+              </div>
+            <% }); %>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </article>
+</div>
