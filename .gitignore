@@ -10,6 +10,24 @@ public/
 # Database
 db.json
 
+# Old Fluid theme files
+css/
+js/
+img/
+
+# Generated pages (should only be in gh-pages)
+404.html
+index.html
+about/
+archives/
+categories/
+tags/
+frist/
+links/
+xml/
+local-search.xml
+2025/
+
 # Logs
 *.log
 npm-debug.log*
@@ -27,3 +45,7 @@ Thumbs.db
 
 # Temporary files
 tmp/
+
+# Documentation
+*.md
+!README.md
