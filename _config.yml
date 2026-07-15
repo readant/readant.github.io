@@ -61,6 +61,6 @@ theme: custom-l-theme
 # Deployment
 deploy:
   type: git
-  repo: git@github.com:readant/readant.github.io.git
+  repo: https://github.com/readant/readant.github.io.git
   branch: gh-pages
-  message: "Site updated: {{now('YYYY-MM-DD HH:mm:ss')}}"
+  message: "deploy: site updated at {{ now('YYYY-MM-DD HH:mm:ss') }}"
