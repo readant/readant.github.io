@@ -3,7 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
   <title>我的作品 - L Blog</title>
+  <meta name="description" content="物联网工程专业学生的技术博客，记录学习路上的点滴">
+  <meta name="author" content="readant">
+  <meta name="keywords" content="">
+
+  
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="我的作品 - L Blog">
+  <meta property="og:description" content="物联网工程专业学生的技术博客，记录学习路上的点滴">
+  <meta property="og:url" content="/projects/index.html">
+  <meta property="og:site_name" content="L Blog">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="我的作品 - L Blog">
+  <meta name="twitter:description" content="物联网工程专业学生的技术博客，记录学习路上的点滴">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+
+  
+  <link rel="canonical" href="/projects/index.html">
+
+  
+  <link rel="preconnect" href="https://fonts.loli.net">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.loli.net/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  
   <link rel="stylesheet" href="/css/l-theme.css">
 <meta name="generator" content="Hexo 7.3.0"></head>
 <body>
@@ -40,11 +74,19 @@
         </a>
       
     </nav>
-    <button class="menu-toggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <div class="header-actions">
+      <button class="search-button" id="searchTrigger" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
 </header>
   <main class="main">
@@ -57,25 +99,9 @@
     </header>
 
     <div class="projects-grid">
-      <article class="project-card">
+      <article class="project-card featured">
         <div class="project-header">
-          <h2 class="project-name">
-            <a href="https://github.com/readant/Sum" target="_blank">Sum</a>
-          </h2>
-        </div>
-        <p class="project-description">机器学习从入门到实践，记录新手的学习之旅。涵盖数据处理、模型训练、结果可视化等完整流程。</p>
-        <div class="project-meta">
-          <span class="project-language">Jupyter Notebook</span>
-          <span class="project-stars">⭐ 1</span>
-          <span class="project-forks">🍴 0</span>
-        </div>
-        <div class="project-links">
-          <a href="https://github.com/readant/Sum" target="_blank" class="project-link">查看源码 →</a>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="project-header">
+          <span class="project-icon">🤖</span>
           <h2 class="project-name">
             <a href="https://github.com/readant/Lingxin" target="_blank">Lingxin</a>
           </h2>
@@ -93,6 +119,25 @@
 
       <article class="project-card">
         <div class="project-header">
+          <span class="project-icon">🧠</span>
+          <h2 class="project-name">
+            <a href="https://github.com/readant/Sum" target="_blank">Sum</a>
+          </h2>
+        </div>
+        <p class="project-description">机器学习从入门到实践，记录新手的学习之旅。涵盖数据处理、模型训练、结果可视化等完整流程。</p>
+        <div class="project-meta">
+          <span class="project-language">Jupyter Notebook</span>
+          <span class="project-stars">⭐ 1</span>
+          <span class="project-forks">🍴 0</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/readant/Sum" target="_blank" class="project-link">查看源码 →</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-header">
+          <span class="project-icon">🎮</span>
           <h2 class="project-name">
             <a href="https://github.com/readant/Live2D-learning" target="_blank">Live2D-learning</a>
           </h2>
@@ -110,6 +155,7 @@
 
       <article class="project-card">
         <div class="project-header">
+          <span class="project-icon">🐾</span>
           <h2 class="project-name">
             <a href="https://github.com/readant/AlwaysTherePet" target="_blank">AlwaysTherePet</a>
           </h2>
@@ -127,6 +173,7 @@
 
       <article class="project-card">
         <div class="project-header">
+          <span class="project-icon">📝</span>
           <h2 class="project-name">
             <a href="https://github.com/readant/readant.github.io" target="_blank">readant.github.io</a>
           </h2>
@@ -157,5 +204,27 @@
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://github.com/readant/readant.github.io" target="_blank">Custom L Theme</a></p>
   </div>
 </footer>
+
+  
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="搜索文章...">
+        <span class="search-shortcut">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults">
+        <div class="search-empty">输入关键词开始搜索</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/particles.js"></script>
+  <script src="/js/cursor-effects.js"></script>
+  <script src="/js/3d-effects.js"></script>
 </body>
 </html>

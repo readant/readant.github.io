@@ -3,7 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  
   <title>Hexo 博客搭建完全指南 - L Blog</title>
+  <meta name="description" content="物联网工程专业学生的技术博客，记录学习路上的点滴">
+  <meta name="author" content="readant">
+  <meta name="keywords" content="Hexo, GitHub Pages, 博客">
+
+  
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Hexo 博客搭建完全指南 - L Blog">
+  <meta property="og:description" content="物联网工程专业学生的技术博客，记录学习路上的点滴">
+  <meta property="og:url" content="/2026/05/09/hexo-blog-setup/">
+  <meta property="og:site_name" content="L Blog">
+  
+
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hexo 博客搭建完全指南 - L Blog">
+  <meta name="twitter:description" content="物联网工程专业学生的技术博客，记录学习路上的点滴">
+
+  
+  <link rel="icon" type="image/svg+xml" href="/img/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+
+  
+  <link rel="canonical" href="/2026/05/09/hexo-blog-setup/">
+
+  
+  <link rel="preconnect" href="https://fonts.loli.net">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link href="https://fonts.loli.net/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  
   <link rel="stylesheet" href="/css/l-theme.css">
 <meta name="generator" content="Hexo 7.3.0"></head>
 <body>
@@ -40,29 +74,42 @@
         </a>
       
     </nav>
-    <button class="menu-toggle" aria-label="Toggle menu">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+    <div class="header-actions">
+      <button class="search-button" id="searchTrigger" aria-label="Search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+      </button>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
   </div>
 </header>
   <main class="main">
     <div class="container">
-      <article class="post single">
-  <header class="post-header">
-    <h1 class="post-title">Hexo 博客搭建完全指南</h1>
-    <div class="post-meta">
-      <span class="post-date">2026-05-09</span>
       
-        <span class="post-category">
-          教程
-        </span>
-      
-    </div>
-  </header>
-  <div class="post-content">
-    <h1 id="Hexo-博客搭建完全指南"><a href="#Hexo-博客搭建完全指南" class="headerlink" title="Hexo 博客搭建完全指南"></a>Hexo 博客搭建完全指南</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hexo 是一个快速、简洁且高效的博客框架，使用 Markdown 编写文章，生成静态网页。本文将详细介绍如何从零开始搭建一个基于 Hexo + GitHub Pages 的个人博客。</p>
+
+
+
+<div class="post-layout ">
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">Hexo 博客搭建完全指南</h1>
+      <div class="post-meta">
+        <span class="post-date">2026-05-09</span>
+        
+          <span class="post-category">
+            教程
+          </span>
+        
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="Hexo-博客搭建完全指南"><a href="#Hexo-博客搭建完全指南" class="headerlink" title="Hexo 博客搭建完全指南"></a>Hexo 博客搭建完全指南</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hexo 是一个快速、简洁且高效的博客框架，使用 Markdown 编写文章，生成静态网页。本文将详细介绍如何从零开始搭建一个基于 Hexo + GitHub Pages 的个人博客。</p>
 <h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><h3 id="1-安装-Node-js"><a href="#1-安装-Node-js" class="headerlink" title="1. 安装 Node.js"></a>1. 安装 Node.js</h3><p>Hexo 基于 Node.js 运行，需要先安装 Node.js 环境。</p>
 <p><strong>下载地址</strong>：<a target="_blank" rel="noopener" href="https://nodejs.org/">https://nodejs.org/</a></p>
 <p>安装完成后，在终端验证：</p>
@@ -150,21 +197,145 @@
 <h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>通过以上步骤，你已经成功搭建了一个基于 Hexo + GitHub Pages 的个人博客。Hexo 的强大之处在于其丰富的主题和插件生态，你可以根据需要进一步定制和优化你的博客。</p>
 <p>祝你写作愉快！</p>
 
-  </div>
+    </div>
+    
+      <footer class="post-footer">
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" class="tag">Hexo</a>
+          
+            <a href="/tags/GitHub%20Pages/" class="tag">GitHub Pages</a>
+          
+            <a href="/tags/%E5%8D%9A%E5%AE%A2/" class="tag">博客</a>
+          
+        </div>
+      </footer>
+    
+  </article>
+
   
-    <footer class="post-footer">
-      <div class="post-tags">
-        
-          <a href="/tags/Hexo/" class="tag">Hexo</a>
-        
-          <a href="/tags/GitHub%20Pages/" class="tag">GitHub Pages</a>
-        
-          <a href="/tags/%E5%8D%9A%E5%AE%A2/" class="tag">博客</a>
-        
-      </div>
-    </footer>
+    <aside class="toc-sidebar">
+      <nav class="toc">
+        <div class="toc-title">目录</div>
+        <ul class="toc-list">
+          
+            <li class="toc-item level-1">
+              <a href="#Hexo-博客搭建完全指南" class="toc-link">Hexo 博客搭建完全指南</a>
+            </li>
+          
+            <li class="toc-item level-2">
+              <a href="#前言" class="toc-link">前言</a>
+            </li>
+          
+            <li class="toc-item level-2">
+              <a href="#环境准备" class="toc-link">环境准备</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#1-安装-Node-js" class="toc-link">1. 安装 Node.js</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#2-安装-Git" class="toc-link">2. 安装 Git</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#3-配置-GitHub" class="toc-link">3. 配置 GitHub</a>
+            </li>
+          
+            <li class="toc-item level-2">
+              <a href="#初始化博客" class="toc-link">初始化博客</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#1-创建博客项目" class="toc-link">1. 创建博客项目</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#2-项目目录结构" class="toc-link">2. 项目目录结构</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#3-启动本地服务器" class="toc-link">3. 启动本地服务器</a>
+            </li>
+          
+            <li class="toc-item level-2">
+              <a href="#更换主题" class="toc-link">更换主题</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#安装主题" class="toc-link">安装主题</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#启用主题" class="toc-link">启用主题</a>
+            </li>
+          
+            <li class="toc-item level-2">
+              <a href="#部署到-GitHub-Pages" class="toc-link">部署到 GitHub Pages</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#1-创建-GitHub-仓库" class="toc-link">1. 创建 GitHub 仓库</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#2-安装部署插件" class="toc-link">2. 安装部署插件</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#3-配置部署信息" class="toc-link">3. 配置部署信息</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#4-部署博客" class="toc-link">4. 部署博客</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#5-配置-GitHub-Pages" class="toc-link">5. 配置 GitHub Pages</a>
+            </li>
+          
+            <li class="toc-item level-2">
+              <a href="#常用命令" class="toc-link">常用命令</a>
+            </li>
+          
+            <li class="toc-item level-2">
+              <a href="#编写文章" class="toc-link">编写文章</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#创建文章" class="toc-link">创建文章</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#文章格式" class="toc-link">文章格式</a>
+            </li>
+          
+            <li class="toc-item level-2">
+              <a href="#常见问题" class="toc-link">常见问题</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#Q-部署后页面没有更新？" class="toc-link">Q: 部署后页面没有更新？</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#Q-GitHub-Pages-显示-404？" class="toc-link">Q: GitHub Pages 显示 404？</a>
+            </li>
+          
+            <li class="toc-item level-3">
+              <a href="#Q-如何绑定自定义域名？" class="toc-link">Q: 如何绑定自定义域名？</a>
+            </li>
+          
+            <li class="toc-item level-2">
+              <a href="#结语" class="toc-link">结语</a>
+            </li>
+          
+        </ul>
+      </nav>
+    </aside>
   
-</article>
+</div>
     </div>
   </main>
   <footer class="footer">
@@ -173,5 +344,27 @@
     <p>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://github.com/readant/readant.github.io" target="_blank">Custom L Theme</a></p>
   </div>
 </footer>
+
+  
+  <div class="search-overlay" id="searchOverlay">
+    <div class="search-container">
+      <div class="search-input-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <path d="m21 21-4.35-4.35"></path>
+        </svg>
+        <input type="text" class="search-input" id="searchInput" placeholder="搜索文章...">
+        <span class="search-shortcut">ESC</span>
+      </div>
+      <div class="search-results" id="searchResults">
+        <div class="search-empty">输入关键词开始搜索</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/main.js"></script>
+  <script src="/js/particles.js"></script>
+  <script src="/js/cursor-effects.js"></script>
+  <script src="/js/3d-effects.js"></script>
 </body>
 </html>
