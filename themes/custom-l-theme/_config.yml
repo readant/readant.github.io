@@ -36,21 +36,27 @@ author:
     blogs: 50+
     commits: 500+
 
-# Skills - 八卦阵环绕的技术栈
-skills:
-  - name: HTML5
-    category: frontend
-  - name: CSS3
-    category: frontend
-  - name: JavaScript
-    category: frontend
-  - name: React
-    category: frontend
-  - name: Vue
-    category: frontend
-  - name: Node.js
-    category: backend
-  - name: Python
-    category: backend
-  - name: Express
-    category: backend
+# 古典文化配置
+classical:
+  footer_poem: '博学之，审问之，慎思之，明辨之，笃行之'
+  about_quote: '穷则变，变则通，通则久'
+  about_quote_source: '《周易·系辞下》'
+
+# Skills - 八卦技能环展示领域
+# 五行映射（以技术本质属性对应五行属性）：
+#   金 = 结构/精密 → 前端开发
+#   木 = 生长/分支 → 组件架构
+#   水 = 流动/智慧 → 运行时/通信
+#   火 = 转化/能量 → 服务端
+#   土 = 承载/化生 → 数据与工具
+domains:
+  - name: 前端
+    wuxing: metal
+  - name: 组件
+    wuxing: wood
+  - name: 运行时
+    wuxing: water
+  - name: 服务端
+    wuxing: fire
+  - name: 数据
+    wuxing: earth

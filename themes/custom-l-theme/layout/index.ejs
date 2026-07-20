@@ -1,34 +1,72 @@
+<%# 八卦三爻符号 %>
+<% const trigrams = [
+  { name: '乾', meaning: '天', lines: [1,1,1] },
+  { name: '兑', meaning: '泽', lines: [1,1,0] },
+  { name: '离', meaning: '火', lines: [1,0,1] },
+  { name: '震', meaning: '雷', lines: [0,0,1] },
+  { name: '巽', meaning: '风', lines: [1,1,0] },
+  { name: '坎', meaning: '水', lines: [0,1,0] },
+  { name: '艮', meaning: '山', lines: [0,0,1] },
+  { name: '坤', meaning: '地', lines: [0,0,0] }
+]; %>
+<% const domains = theme.domains || []; %>
+
 <div class="hero-section">
-  <div class="taiji-container">
-    <div class="taiji-wrapper">
-      <div class="taiji-circle">
-        <div class="skill-ring">
-          <% const skills = theme.skills || []; %>
-          <% skills.forEach(function(skill, index) { %>
-            <% const angle = (index / skills.length) * 360; %>
-            <div class="skill-item" style="--angle: <%= angle %>deg;">
-              <span class="skill-name"><%= skill.name %></span>
+  <div class="hero-inner">
+    <%# 左侧：文字内容 %>
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <span class="wuxing-dot fire"></span>
+        物联网工程 · 全栈开发
+      </div>
+      <h1 class="hero-title"><%= theme.author.name %></h1>
+      <p class="hero-bio"><%= theme.author.bio %></p>
+      <div class="hero-cta">
+        <a href="/about/" class="btn-primary">了解更多</a>
+        <a href="/archives/" class="btn-ghost">浏览文章</a>
+      </div>
+    </div>
+
+    <%# 右侧：八卦底环 + 五行领域展示 %>
+    <div class="hero-right">
+      <div class="bagua-container">
+        <%# 外圈：八卦符号（装饰性） %>
+        <div class="bagua-ring">
+          <% trigrams.forEach(function(tri, index) { %>
+            <% const angle = (index / trigrams.length) * 360 - 90; %>
+            <div class="bagua-symbol" style="--angle: <%= angle %>deg;">
+              <div class="bagua-triple">
+                <% tri.lines.forEach(function(line) { %>
+                  <div class="gua-line <%= line ? 'yang' : 'yin' %>"></div>
+                <% }); %>
+              </div>
             </div>
           <% }); %>
         </div>
-        <div class="center-element">
-          <div class="avatar-display">
-            <img src="<%= theme.author.avatar %>" alt="<%= theme.author.name %>" class="avatar-img">
-          </div>
-          <div class="yinyang-display">
-            <div class="yinyang-symbol"></div>
-          </div>
+
+        <%# 内圈：五行领域（信息性） %>
+        <div class="wuxing-ring">
+          <% domains.forEach(function(domain, index) { %>
+            <% const angle = (index / domains.length) * 360 - 90; %>
+            <div class="wuxing-item" style="--angle: <%= angle %>deg;">
+              <span class="wuxing-label <%= domain.wuxing %>"><%= domain.name %></span>
+            </div>
+          <% }); %>
+        </div>
+
+        <%# 中心头像 %>
+        <div class="avatar-core">
+          <div class="avatar-pulse"></div>
+          <div class="avatar-pulse delay"></div>
+          <img src="<%= theme.author.avatar %>" alt="<%= theme.author.name %>" class="avatar-img">
         </div>
       </div>
     </div>
-    <div class="hero-text">
-      <h1 class="hero-title"><%= theme.author.name %></h1>
-      <p class="hero-bio"><%= theme.author.bio %></p>
-    </div>
-    <div class="scroll-hint">
-      <span>向下滚动</span>
-      <div class="scroll-arrow"></div>
-    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>向下滚动</span>
+    <div class="scroll-arrow"></div>
   </div>
 </div>
 
@@ -44,27 +82,34 @@
         <p><%= theme.author.intro %></p>
       </div>
 
+      <div class="classical-quote">
+        <div class="quote-bracket left">「</div>
+        <p class="quote-text">穷则变，变则通，通则久</p>
+        <p class="quote-source">—— 《周易·系辞下》</p>
+        <div class="quote-bracket right">」</div>
+      </div>
+
       <div class="about-grid">
-        <div class="about-card">
-          <div class="about-icon"></div>
+        <div class="about-card" data-wuxing="earth">
+          <div class="wuxing-badge earth">土</div>
           <h3 class="about-card-title">个人目标</h3>
           <p><%= theme.author.objective %></p>
         </div>
         
-        <div class="about-card">
-          <div class="about-icon"></div>
+        <div class="about-card" data-wuxing="metal">
+          <div class="wuxing-badge metal">金</div>
           <h3 class="about-card-title">技术理念</h3>
           <p><%= theme.author.philosophy %></p>
         </div>
         
-        <div class="about-card">
-          <div class="about-icon"></div>
+        <div class="about-card" data-wuxing="water">
+          <div class="wuxing-badge water">水</div>
           <h3 class="about-card-title">学习方向</h3>
           <p><%= theme.author.learning %></p>
         </div>
         
-        <div class="about-card">
-          <div class="about-icon"></div>
+        <div class="about-card" data-wuxing="wood">
+          <div class="wuxing-badge wood">木</div>
           <h3 class="about-card-title">兴趣爱好</h3>
           <p><%= theme.author.hobbies %></p>
         </div>
