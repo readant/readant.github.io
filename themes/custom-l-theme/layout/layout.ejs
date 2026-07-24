@@ -67,5 +67,14 @@
   </div>
 
   <script src="/js/main.js"></script>
+
+  <%# Page Agent - 通过 ?agent=1 激活 %>
+  <script>
+    if (new URLSearchParams(location.search).get('agent') === '1') {
+      var s = document.createElement('script');
+      s.src = 'https://cdn.jsdelivr.net/npm/page-agent@1.12.2/dist/iife/page-agent.demo.js?lang=zh-CN';
+      document.body.appendChild(s);
+    }
+  </script>
 </body>
 </html>

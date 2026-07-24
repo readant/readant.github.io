@@ -1876,7 +1876,7 @@ ul, ol {
 /* ========================================
    Responsive - Hero 新布局
    ======================================== */
-
+@media (max-width: 768px) {
   /* Mobile: Single column layout */
   .about-grid {
     grid-template-columns: 1fr;
