@@ -4,7 +4,7 @@ layout: page
 type: ad
 ---
 
-<p class="ad-lead">一页式服务广告，单文件 HTML——不引 CDN、不依赖脚本，断网双击也能打开。</p>
+<p class="ad-lead">一页式服务广告，HTML 只有 21 KB，配图单独走浏览器缓存；不依赖任何脚本，改文案不用碰图片。</p>
 
 <article class="ad-card">
   <div class="ad-card-head">
@@ -16,7 +16,7 @@ type: ad
   </div>
   <div class="ad-card-foot">
     <a class="btn-primary" href="/ad/dark.html" target="_blank" rel="noopener">打开完整页 →</a>
-    <span class="ad-size">278 KB · 零外链 · 零脚本</span>
+    <span class="ad-size">HTML 21 KB · 配图 197 KB 外链 · 零脚本</span>
   </div>
 </article>
 
