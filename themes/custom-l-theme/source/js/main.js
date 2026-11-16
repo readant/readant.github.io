@@ -699,24 +699,3 @@ function initCursorGlow() {
   }
   animate();
 }
-
-/* ========================================
-   电子作品展示页 /ad/
-   把 1440×900 的内嵌页等比缩放到容器宽度
-   ======================================== */
-(function () {
-  const frames = document.querySelectorAll('.ad-frame');
-  if (!frames.length) return;
-
-  function fitAdFrames() {
-    frames.forEach(function (frame) {
-      const iframe = frame.querySelector('iframe');
-      if (!iframe) return;
-      iframe.style.transform = 'scale(' + frame.clientWidth / 1440 + ')';
-    });
-  }
-
-  fitAdFrames();
-  window.addEventListener('resize', fitAdFrames);
-  window.addEventListener('load', fitAdFrames);
-})();
