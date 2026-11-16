@@ -5,8 +5,12 @@
       <span class="logo-text"><%= config.author.name %></span>
     </a>
     <nav class="nav">
+      <%
+        /* page.path 形如 'ad/index.html'，需归一化为 '/ad/' 才能与 nav.url 比较 */
+        var currentPath = '/' + String(page.path || '').replace(/index\.html$/, '');
+      %>
       <% (theme.nav || []).forEach(function(item) { %>
-        <a href="<%= item.url %>" class="nav-item <%= page.path === item.url || (item.url !== '/' && page.path.startsWith(item.url)) ? 'active' : '' %>">
+        <a href="<%= item.url %>" class="nav-item <%= currentPath === item.url ? 'active' : '' %>">
           <%= item.name %>
         </a>
       <% }); %>

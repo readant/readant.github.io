@@ -21,6 +21,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - 'ad/dark.html'
 
 # Writing
 new_post_name: :title.md

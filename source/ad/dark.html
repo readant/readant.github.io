@@ -1,0 +1,817 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>L君 · 软件技术服务｜墨金版</title>
+  <meta name="description" content="逆向工程与二进制分析、系统清理、开发环境部署、知识库整理。远程协助，全程指导。">
+  <style>
+    :root {
+      --bg: #0a0c0f;
+      --ink: #eef1f4;
+      --dim: #8f9ca8;
+      --gold: #c8a36a;
+      --line: rgba(255, 255, 255, .085);
+      --sans: "Source Han Sans SC", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", sans-serif;
+      --serif: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ---------- 背景 ---------- */
+    .bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(920px 720px at 83% 30%, rgba(200, 163, 106, .10), transparent 62%),
+        radial-gradient(720px 620px at 6% 88%, rgba(68, 88, 108, .14), transparent 62%),
+        linear-gradient(168deg, #0d1013 0%, #0a0c0f 58%, #07090b 100%);
+    }
+
+    .bg::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(112deg, rgba(255, 255, 255, .014) 0 1px, transparent 1px 9px);
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1580px;
+      margin: 0 auto;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      padding: clamp(14px, 1.7vw, 24px) clamp(20px, 3.6vw, 52px) clamp(14px, 1.6vw, 22px);
+    }
+
+    /* ---------- 报头 ---------- */
+    .mast {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-bottom: clamp(8px, 1vw, 12px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mast-l {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0
+    }
+
+    .mark {
+      width: 26px;
+      height: 26px;
+      flex: 0 0 26px;
+      border: 1px solid var(--gold);
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .mast-t {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .22em;
+      color: #dfe4e9;
+      white-space: nowrap
+    }
+
+    .mast-r {
+      font-size: 10.5px;
+      letter-spacing: .2em;
+      color: var(--dim);
+      white-space: nowrap
+    }
+
+    .mast-r .sep {
+      color: rgba(200, 163, 106, .5);
+      margin: 0 8px
+    }
+
+    /* ---------- 首屏 ---------- */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.04fr) minmax(300px, .96fr);
+      gap: clamp(20px, 3.2vw, 56px);
+      grid-template-rows: 1fr;
+      min-height: min(calc(100dvh - 96px), 980px);
+      padding-top: clamp(12px, 1.7vw, 24px);
+    }
+
+    .copy {
+      min-width: 0;
+      display: flex;
+      flex-direction: column
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .26em;
+      color: var(--gold);
+      margin-bottom: clamp(7px, .9vw, 11px);
+    }
+
+    .eyebrow i {
+      display: block;
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .65
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(26px, 2.7vw, 40px);
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: .015em;
+      color: #f6f8fa;
+      text-wrap: balance;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--gold)
+    }
+
+    .lede {
+      margin-top: clamp(6px, .75vw, 10px);
+      font-size: clamp(12px, .92vw, 13px);
+      color: #aab4bf;
+      letter-spacing: .02em;
+    }
+
+    /* ---------- 主推三卡 ---------- */
+    .pick-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: clamp(14px, 1.9vw, 26px);
+      margin-bottom: 6px;
+      font-size: 10.5px;
+      letter-spacing: .2em;
+      color: #7f8a95;
+    }
+
+    .pick-head b {
+      display: inline-block;
+      padding: 2px 7px;
+      background: rgba(200, 163, 106, .14);
+      border: 1px solid rgba(200, 163, 106, .42);
+      border-radius: 2px;
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+
+    .picks {
+      list-style: none
+    }
+
+    .pick {
+      position: relative;
+      padding: clamp(10px, 2.6vh, 26px) 0 clamp(10px, 2.6vh, 26px) 46px;
+      border-top: 1px solid var(--line);
+    }
+
+    .pick:last-child {
+      border-bottom: 1px solid var(--line)
+    }
+
+    .pk-no {
+      position: absolute;
+      left: 0;
+      top: clamp(10px, 2.6vh, 26px);
+      font-family: var(--serif);
+      font-size: clamp(20px, 1.7vw, 26px);
+      font-weight: 800;
+      line-height: 1.1;
+      color: rgba(200, 163, 106, .42);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .pick h2 {
+      font-size: clamp(14.5px, 1.14vw, 17px);
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: #f4f7f9;
+      line-height: 1.4;
+    }
+
+    .pk-sub {
+      margin-top: 2px;
+      font-size: clamp(11px, .84vw, 12.2px);
+      color: #98a4b0;
+      letter-spacing: .01em
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 7px;
+      list-style: none
+    }
+
+    .chips li {
+      font-size: 10.5px;
+      letter-spacing: .04em;
+      color: #cbb894;
+      padding: 2px 8px;
+      border: 1px solid rgba(200, 163, 106, .26);
+      border-radius: 2px;
+      background: rgba(200, 163, 106, .05);
+      white-space: nowrap;
+    }
+
+    /* ---------- 承诺 / 落款 ---------- */
+    .bottom {
+      margin-top: auto;
+      padding-top: clamp(12px, 1.7vw, 24px)
+    }
+
+    .promise {
+      font-family: var(--serif);
+      font-size: clamp(13px, 1.04vw, 15.5px);
+      font-weight: 700;
+      letter-spacing: .06em;
+      color: #f2f5f7;
+    }
+
+    .promise i {
+      font-style: normal;
+      color: var(--gold);
+      margin: 0 10px
+    }
+
+    .sign {
+      margin-top: clamp(8px, 1vw, 13px);
+      padding-top: clamp(7px, .85vw, 10px);
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 11px;
+    }
+
+    .seal {
+      width: 32px;
+      height: 32px;
+      flex: 0 0 32px;
+      border: 1.5px solid var(--gold);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--serif);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--gold);
+    }
+
+    .name {
+      font-family: var(--serif);
+      font-size: clamp(16px, 1.28vw, 20px);
+      font-weight: 800;
+      letter-spacing: .12em;
+      color: #f4f7f9;
+    }
+
+    .contact {
+      margin-left: auto;
+      text-align: right;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      color: #b6c0ca;
+      line-height: 1.95;
+      white-space: nowrap;
+    }
+
+    .contact b {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    /* ---------- 画像 ---------- */
+    .art {
+      position: relative;
+      min-width: 0;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center
+    }
+
+    .art::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 2%;
+      transform: translateX(-50%);
+      width: 92%;
+      height: 70%;
+      background: radial-gradient(closest-side at 50% 58%, rgba(200, 163, 106, .20), rgba(200, 163, 106, .07) 52%, transparent 72%);
+      pointer-events: none;
+    }
+
+    .art-v {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 80%, rgba(0, 0, 0, .4) 92%, transparent 100%);
+      mask-image: linear-gradient(to bottom, #000 0%, #000 80%, rgba(0, 0, 0, .4) 92%, transparent 100%);
+    }
+
+    .art img {
+      display: block;
+      max-width: 100%;
+      max-height: min(calc(100dvh - 140px), 940px);
+      width: auto;
+      height: auto;
+      filter: brightness(1.04) contrast(1.03);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, .3) 5%, #000 13%, #000 83%, rgba(0, 0, 0, .28) 94%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, .3) 5%, #000 13%, #000 83%, rgba(0, 0, 0, .28) 94%, transparent 100%);
+    }
+
+    /* ---------- 下方分区 ---------- */
+    .band {
+      margin-top: clamp(34px, 5vw, 72px);
+      padding-top: clamp(18px, 2.4vw, 30px);
+      border-top: 1px solid rgba(255, 255, 255, .14);
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: clamp(10px, 1.4vw, 18px)
+    }
+
+    .sec-t {
+      font-family: var(--serif);
+      font-size: clamp(17px, 1.5vw, 22px);
+      font-weight: 800;
+      letter-spacing: .08em;
+      color: #f2f5f8
+    }
+
+    .sec-s {
+      font-size: 10.5px;
+      letter-spacing: .16em;
+      color: #7f8a95
+    }
+
+    /* 全部服务 */
+    .rows {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-flow: column;
+      grid-template-rows: repeat(4, auto);
+      gap: 0 clamp(24px, 3.2vw, 56px);
+    }
+
+    .rows li {
+      display: grid;
+      grid-template-columns: 34px minmax(0, 1fr);
+      gap: 10px;
+      padding: clamp(8px, 1vw, 13px) 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .rows .no {
+      font-family: var(--serif);
+      font-size: 11px;
+      font-weight: 700;
+      color: rgba(200, 163, 106, .55);
+      letter-spacing: .06em;
+      padding-top: 2px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .rows h3 {
+      font-size: clamp(13px, .98vw, 14.4px);
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: #e9eef2;
+      line-height: 1.45
+    }
+
+    .rows h3 .tag {
+      color: var(--gold);
+      font-size: 10px;
+      margin-left: 6px;
+      letter-spacing: 0;
+      vertical-align: 1px
+    }
+
+    .rows p {
+      margin-top: 3px;
+      font-size: clamp(10.6px, .8vw, 11.8px);
+      line-height: 1.55;
+      color: var(--dim)
+    }
+
+    /* 能力背书 */
+    .proof {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: clamp(14px, 2vw, 32px)
+    }
+
+    .proof li {
+      border-top: 2px solid rgba(200, 163, 106, .45);
+      padding-top: 10px
+    }
+
+    .pf-n {
+      font-family: var(--serif);
+      font-size: clamp(24px, 2.5vw, 34px);
+      font-weight: 800;
+      color: #f6f8fa;
+      line-height: 1.15;
+      letter-spacing: .01em;
+    }
+
+    .pf-n span {
+      font-size: .5em;
+      color: var(--gold);
+      margin-left: 2px
+    }
+
+    .pf-l {
+      margin-top: 5px;
+      font-size: 11px;
+      line-height: 1.6;
+      color: #98a4b0;
+      letter-spacing: .02em
+    }
+
+    .proof-note {
+      margin-top: 14px;
+      font-size: 10.5px;
+      color: #6f7a85;
+      letter-spacing: .06em
+    }
+
+    /* 边界声明 */
+    .bound {
+      border-left: 2px solid rgba(200, 163, 106, .55);
+      padding-left: clamp(12px, 1.4vw, 20px);
+      max-width: 62em;
+    }
+
+    .bound h3 {
+      font-family: var(--serif);
+      font-size: clamp(14px, 1.1vw, 16px);
+      font-weight: 800;
+      letter-spacing: .06em;
+      color: #eef2f5;
+      margin-bottom: 8px
+    }
+
+    .bound p {
+      font-size: clamp(11.4px, .88vw, 12.6px);
+      line-height: 1.85;
+      color: #a5b0bb
+    }
+
+    .bound p+p {
+      margin-top: 8px;
+      color: #7f8a95
+    }
+
+    /* ---------- 页脚 ---------- */
+    .foot {
+      margin-top: clamp(30px, 4vw, 56px);
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 10.5px;
+      letter-spacing: .14em;
+      color: #6f7a85;
+    }
+
+    /* ---------- 响应式 ---------- */
+    @media (max-width:1180px) {
+      .proof {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+      }
+    }
+
+    @media (max-width:980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        min-height: 0;
+        gap: 0
+      }
+
+      .art {
+        order: -1;
+        margin-bottom: clamp(8px, 2vw, 18px)
+      }
+
+      .art img {
+        max-height: clamp(200px, 42vh, 340px)
+      }
+
+      .art::before {
+        width: 158%;
+        height: 128%;
+        bottom: -12%;
+        left: 50%
+      }
+
+      h1 {
+        font-size: clamp(26px, 7.4vw, 38px)
+      }
+
+      .rows {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        grid-auto-flow: row
+      }
+
+      .pick {
+        padding-left: 40px
+      }
+    }
+
+    @media (max-width:640px) {
+      .proof {
+        grid-template-columns: 1fr
+      }
+
+      .mast-r {
+        display: none
+      }
+
+      .contact {
+        white-space: normal;
+        margin-left: 0;
+        text-align: left;
+        width: 100%;
+        order: 3;
+        margin-top: 6px
+      }
+
+      .sign {
+        flex-wrap: wrap;
+        gap: 10px
+      }
+
+      .sec-s {
+        display: none
+      }
+
+      .foot {
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start
+      }
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      * {
+        transition: none !important
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg" aria-hidden="true"></div>
+
+  <div class="wrap">
+    <header class="mast">
+      <div class="mast-l">
+        <span class="mark">L</span>
+        <span class="mast-t">L 君 · 技术服务</span>
+      </div>
+      <div class="mast-r">SERVICE CATALOG<span class="sep">/</span>REMOTE DELIVERY</div>
+    </header>
+
+    <section class="hero">
+      <div class="copy">
+        <p class="eyebrow"><i></i>环境部署 · 报错排错 · 文档梳理</p>
+
+        <h1>软件安装配置<br><em>系统清理 · 知识库整理</em></h1>
+
+        <p class="lede">从一台刚装好的系统，到一套能长期用下去的环境——一次把它理顺。</p>
+
+        <p class="pick-head"><b>主推</b>TOP 4 · 按需求热度排序</p>
+        <ol class="picks">
+          <li class="pick">
+            <span class="pk-no">01</span>
+            <h2>逆向工程 / 二进制分析</h2>
+            <p class="pk-sub">从应用行为到原生二进制的逐层分析</p>
+            <ul class="chips">
+              <li>静态分析</li>
+              <li>行为抓取</li>
+              <li>依赖还原</li>
+            </ul>
+          </li>
+          <li class="pick">
+            <span class="pk-no">02</span>
+            <h2>系统清理 · 去流氓 · 提速</h2>
+            <p class="pk-sub">把被塞满的机器清回干净状态</p>
+            <ul class="chips">
+              <li>全家桶卸载</li>
+              <li>弹窗与劫持修复</li>
+              <li>残留与启动项</li>
+            </ul>
+          </li>
+          <li class="pick">
+            <span class="pk-no">03</span>
+            <h2>AI 工具链部署</h2>
+            <p class="pk-sub">主流编程智能体 + 本地模型，装完就能用</p>
+            <ul class="chips">
+              <li>DeepSeek Harness</li>
+              <li>Codex CLI</li>
+              <li>Claude Code</li>
+              <li>Cursor</li>
+              <li>Copilot</li>
+            </ul>
+          </li>
+          <li class="pick">
+            <span class="pk-no">04</span>
+            <h2>开发环境全家桶</h2>
+            <p class="pk-sub">JetBrains + 单片机 + 语言环境，一次配齐</p>
+            <ul class="chips">
+              <li>JetBrains 12 件</li>
+              <li>Keil · STM32Cube</li>
+              <li>Python · JDK · Go</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="bottom">
+          <p class="promise">线上远程协助<i>·</i>全程指导<i>·</i>包能跑通</p>
+
+          <div class="sign">
+            <span class="seal">L</span>
+            <span class="name">【L君】</span>
+            <span class="contact">QQ 3908492312<br>邮箱 3908492312@qq.com · readant123@gmail.com</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="art">
+        <div class="art-v"><img
+            src="daaixianzun.webp" width="920" height="1226"
+            alt="水墨人物插画（大爱仙尊）"></div>
+      </aside>
+    </section>
+
+    <section class="band">
+      <div class="sec-head">
+        <h2 class="sec-t">全部服务</h2>
+        <p class="sec-s">共 8 项 · ★ 为主导项</p>
+      </div>
+      <ol class="rows">
+        <li>
+          <span class="no">01</span>
+          <div>
+            <h3>逆向工程 / 二进制分析<span class="tag">★</span></h3>
+            <p>PE / ELF 结构分析 · 抓包与行为观测 · 依赖与运行库还原 · 加固 / 混淆识别与说明 · 公开样本学习性分析</p>
+          </div>
+        </li>
+        <li>
+          <span class="no">02</span>
+          <div>
+            <h3>系统清理 / 去流氓 / 提速<span class="tag">★</span></h3>
+            <p>捆绑全家桶卸载 · 弹窗广告清除 · 主页劫持修复 · 残留 / 注册表 / 启动项深度清理 · 开机自启精简</p>
+          </div>
+        </li>
+        <li>
+          <span class="no">03</span>
+          <div>
+            <h3>AI 工具链部署<span class="tag">★</span></h3>
+            <p>DeepSeek Harness（DSH）· Codex CLI · Claude Code · Gemini CLI · Cursor · GitHub Copilot CLI · Qwen Code ·
+              Kimi Code CLI · OpenCode · Aider · Cline · Continue · Ollama / LM Studio 本地模型</p>
+          </div>
+        </li>
+        <li>
+          <span class="no">04</span>
+          <div>
+            <h3>开发环境全家桶<span class="tag">★</span></h3>
+            <p>JetBrains 全家桶（IDEA · PyCharm · CLion · GoLand · WebStorm · DataGrip 等 12 款）· Keil MDK5 / C51 ·
+              STM32CubeIDE · CubeMX · ESP-IDF · Multisim 14 · 串口 / CH340 / CP2102 · VS Code · Python · JDK 17 · Go</p>
+          </div>
+        </li>
+        <li>
+          <span class="no">05</span>
+          <div>
+            <h3>算法刷题环境</h3>
+            <p>Dev-C++ 5.11 + TDM-GCC（对齐蓝桥杯考场）· VS Code + C/C++ + Competitive Programming Helper 一键运行 · C++11 标准锁定</p>
+          </div>
+        </li>
+        <li>
+          <span class="no">06</span>
+          <div>
+            <h3>个人知识库搭建</h3>
+            <p>PARA 目录搭建 · 模板与标签规范 · 去重归位 · 附件归档 · 双链 MOC · Dataview 看板 · 插件部署 · Git 备份</p>
+          </div>
+        </li>
+        <li>
+          <span class="no">07</span>
+          <div>
+            <h3>数据库 / 接口 / 虚拟机</h3>
+            <p>VMware 虚拟机 · MySQL 5.5 / 8.0 · Navicat · Postman · BurpSuite 社区版（仅授权测试）</p>
+          </div>
+        </li>
+        <li>
+          <span class="no">08</span>
+          <div>
+            <h3>多媒体创作</h3>
+            <p>OBS Studio · Blender · Audacity</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <section class="band">
+      <div class="sec-head">
+        <h2 class="sec-t">能力背书</h2>
+        <p class="sec-s">可核对 · 公开仓库</p>
+      </div>
+      <ul class="proof">
+        <li>
+          <p class="pf-n">20<span>+</span></p>
+          <p class="pf-l">开源仓库<br>GitHub / Gitee：readant</p>
+        </li>
+        <li>
+          <p class="pf-n">0.88<span>%</span></p>
+          <p class="pf-l">PINN4SOH 复现平均 MAPE<br>论文报告 0.87%</p>
+        </li>
+        <li>
+          <p class="pf-n">387<span>只</span></p>
+          <p class="pf-l">电池 SOH 数据集规模<br>XJTU / HUST / MIT / TJU</p>
+        </li>
+        <li>
+          <p class="pf-n">26<span>个</span></p>
+          <p class="pf-l">ZiJin 桌面代理内置工具<br>含五关调用流水线</p>
+        </li>
+      </ul>
+      <p class="proof-note">以上数据均可在 GitHub · Gitee（readant）的对应仓库中查证。</p>
+    </section>
+
+    <section class="band">
+      <div class="bound">
+        <h3>关于逆向与破解的边界</h3>
+        <p>逆向与二进制分析仅面向
+          <strong>学习、安全研究与兼容性分析</strong>。不提供破解成品、注册机或激活工具，不协助绕过软件授权，不承接盗版分发与商业牟利用途。涉及第三方软件时在授权范围内进行，或只对公开样本做学习性分析。
+        </p>
+        <p>其余服务仅提供正版 / 教育版 / 开源软件的安装与配置协助。</p>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <span>L 君 · 技术服务</span>
+      <span>价格与工期先沟通后确认 · 不接超出上述边界的需求</span>
+    </footer>
+  </div>
+</body>
+
+</html>

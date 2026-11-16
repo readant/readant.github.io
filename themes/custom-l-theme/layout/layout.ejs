@@ -42,7 +42,7 @@
   <%# Styles %>
   <link rel="stylesheet" href="/css/l-theme.css">
 </head>
-<body>
+<body class="<%= page.type || "" %>">
   <%- partial('_partials/header') %>
   <main class="main">
     <%- body %>
